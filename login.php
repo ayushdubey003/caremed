@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>medanta</title>
+<title>Log In</title>
 <link rel="icon" href="images/logo.png" type="image/gif" sizes="16x16">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,11 +52,8 @@
 							<nav class="main_nav ml-auto">
 									
 								<ul>
-									<li><a href="index.html">Home</a></li>
-									<li><a href="about.html">About us</a></li>
-									<li><a href="services.html">Services</a></li>
-									<li><a href="news.html">News</a></li>
-									<li><a href="contact.html">Contact</a></li>
+									<li><a href="index.php">Home</a></li>
+									<li><a href="login.php">Log in</a></li>
 								</ul>
 							</nav>
 							<div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
@@ -84,11 +81,8 @@
 		<div class="menu_inner menu_mm">
 			<div class="menu menu_mm">
 				<ul class="menu_list menu_mm">
-					<li class="menu_item menu_mm"><a href="index.html">Home</a></li>
-					<li class="menu_item menu_mm"><a href="about.html">About us</a></li>
-					<li class="menu_item menu_mm"><a href="services.html">Services</a></li>
-					<li class="menu_item menu_mm"><a href="news.html">News</a></li>
-					<li class="menu_item menu_mm"><a href="contact.html">Contact</a></li>
+					<li class="menu_item menu_mm"><a href="index.php">Home</a></li>
+					<li class="menu_item menu_mm"><a href="login.php">Log in</a></li>
 				</ul>
 			</div>
 			<div class="menu_extra">
@@ -171,79 +165,42 @@
 	<!-- Footer -->
 
 	<footer class="footer">
-		<div class="footer_container">
+	<div class="footer_container">
 			<div class="container">
 				<div class="row">
 					
 					<!-- Footer - About -->
 					<div class="col-lg-4 footer_col">
 						<div class="footer_about">
-							<div class="footer_logo_container">
+							<div class="footer_logo_container"  style="float:left;">
 								<a href="#" class="d-flex flex-column align-items-center justify-content-center">
 									<div class="logo_content">
 										<div class="logo d-flex flex-row align-items-center justify-content-center">
-											<div class="logo_text">Care<span>Med</span></div>
-											<div class="logo_box">+</div>
+											<img src="images/logo.png">
 										</div>
-										<div class="logo_sub">Health Care Center</div>
 									</div>
 								</a>
 							</div>
 							<div class="footer_about_text">
-								<p>Lorem ipsum dolor sit amet, conse ctetur adipiscing elit. Curabitur ante leo, finibus quis est ut, tempor tincidunt ipsum.</p>
+								<p>MULTI SUPER SPECIALITY HOSPITAL</p>
 							</div>
 							<ul class="footer_about_list">
 								<li><div class="footer_about_icon"><img src="images/phone-call.svg" alt=""></div><span>+45 677 8993000 223</span></li>
-								<li><div class="footer_about_icon"><img src="images/envelope.svg" alt=""></div><span>office@template.com</span></li>
-								<li><div class="footer_about_icon"><img src="images/placeholder.svg" alt=""></div><span>Main Str. no 45-46, b3, 56832, Los Angeles, CA</span></li>
+								<li><div class="footer_about_icon"><img src="images/envelope.svg" alt=""></div><span>information@medanta.com</span></li>
+								<li><div class="footer_about_icon"><img src="images/placeholder.svg" alt=""></div><span>Near jawahar colony,gurugram-HARYANA</span></li>
 							</ul>
 						</div>
 					</div>
 
 					<!-- Footer - Links -->
-					<div class="col-lg-4 footer_col">
-						<div class="footer_links footer_column">
-							<div class="footer_title">Useful Links</div>
-							<ul>
-								<li><a href="#">Testimonials</a></li>
-								<li><a href="#">FAQ</a></li>
-								<li><a href="#">Apply for a Job</a></li>
-								<li><a href="#">Terms & Conditions</a></li>
-								<li><a href="#">Our Partners</a></li>
-								<li><a href="#">Services</a></li>
-								<li><a href="#">Free services</a></li>
-								<li><a href="#">About us</a></li>
-								<li><a href="#">News</a></li>
-								<li><a href="#">Contact</a></li>
-								<li><a href="#">Our Screening Program</a></li>
-								<li><a href="#">FAQ</a></li>
-							</ul>
-						</div>
-					</div>
+					
 
 					<!-- Footer - News -->
-					<div class="col-lg-4 footer_col">
-						<div class="footer_news footer_column">
-							<div class="footer_title">Useful Links</div>
-							<ul>
-								<li>
-									<div class="footer_news_title"><a href="news.html">Aliquam ac eleifend metus</a></div>
-									<div class="footer_news_date">March 10, 2018</div>
-								</li>
-								<li>
-									<div class="footer_news_title"><a href="news.html">Donec in libero sit amet mi vulputate</a></div>
-									<div class="footer_news_date">March 10, 2018</div>
-								</li>
-								<li>
-									<div class="footer_news_title"><a href="news.html">Aliquam ac eleifend metus</a></div>
-									<div class="footer_news_date">March 10, 2018</div>
-								</li>
-							</ul>
-						</div>
-					</div>
+					
 				</div>
 			</div>
 		</div>
+
 		<div class="copyright">
 			<div class="container">
 				<div class="row">

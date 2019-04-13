@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>medanta</title>
+<title>Home</title>
 <link rel="icon" href="images/logo.png" type="image/gif" sizes="16x16">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -48,11 +48,8 @@
 							<nav class="main_nav ml-auto">
 									
 								<ul>
-									<li><a href="index.html">Home</a></li>
-									<li><a href="about.html">About us</a></li>
-									<li><a href="services.html">Services</a></li>
-									<li><a href="news.html">News</a></li>
-									<li><a href="contact.html">Contact</a></li>
+									<li><a href="index.php">Home</a></li>
+									<li><a href="login.php">Log In</a></li>
 								</ul>
 							</nav>
 							<div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
@@ -80,11 +77,8 @@
 		<div class="menu_inner menu_mm">
 			<div class="menu menu_mm">
 				<ul class="menu_list menu_mm">
-					<li class="menu_item menu_mm"><a href="index.html">Home</a></li>
-					<li class="menu_item menu_mm"><a href="about.html">About us</a></li>
-					<li class="menu_item menu_mm"><a href="services.html">Services</a></li>
-					<li class="menu_item menu_mm"><a href="news.html">News</a></li>
-					<li class="menu_item menu_mm"><a href="contact.html">Contact</a></li>
+					<li class="menu_item menu_mm"><a href="index.php">Home</a></li>
+					<li class="menu_item menu_mm"><a href="login.php">Log in</a></li>
 				</ul>
 			</div>
 			<div class="menu_extra">
@@ -112,8 +106,8 @@
 								<div class="col">
 									<div class="home_content_inner">
 										<div class="home_title"><h1 style="color:#ffffff;">Medicine made with care</h1></div>
-										<div class="home_text" >
-											<p>MEDANTA CANCER INSTITUTE has been delivering the highest quality and advance cancer treatment in a supportive, compassionate and caring environment since 2009. The technology and equipment being commissioned are comparable to that available in the most advanced centres across the globe. A meticulous planning with accurate delivery is aimed to ensure optimal patient treatment with a human touch. A protocol based approach for management of brain tumors and various cancers is being established to ensure an international standard of care.</p>
+										<div class="home_text"  >
+											<p style="color: #ffffff">MEDANTA CANCER INSTITUTE has been delivering the highest quality and advance cancer treatment in a supportive, compassionate and caring environment since 2009. The technology and equipment being commissioned are comparable to that available in the most advanced centres across the globe. A meticulous planning with accurate delivery is aimed to ensure optimal patient treatment with a human touch. A protocol based approach for management of brain tumors and various cancers is being established to ensure an international standard of care.</p>
 										</div>
 										<div class="button home_button">
 											<a href="#">read more</a>
@@ -252,11 +246,9 @@
 				<!-- Department -->
 				<div class="col-lg-3 col-md-6 dept_col">
 					<div class="dept">
-						<div class="dept_image"><img src="images/dept_1.jpg" alt=""></div>
+						<div class="dept_image"><img src="caremedimages/d1.jpg" alt="" style="height:175px;width:275px"></div>
 						<div class="dept_content text-center">
 							<div class="dept_title">plastic surgery</div>
-							<div class="dept_subtitle">Dr. Rakesh Kumar Khazanchi</div>
-							Chairman
 						</div>
 					</div>
 				</div>
@@ -264,11 +256,9 @@
 				<!-- Department -->
 				<div class="col-lg-3 col-md-6 dept_col">
 					<div class="dept">
-						<div class="dept_image"><img src="images/dept_2.jpg" alt=""></div>
+						<div class="dept_image"><img src="caremedimages/d2.jpg" alt="" style="height:175px;width:275px"></div>
 						<div class="dept_content text-center">
 							<div class="dept_title">gastroenterology</div>
-							<div class="dept_subtitle">Dr. Randhir Sud</div>
-							Chairman
 						</div>
 					</div>
 				</div>
@@ -276,10 +266,9 @@
 				<!-- Department -->
 				<div class="col-lg-3 col-md-6 dept_col">
 					<div class="dept">
-						<div class="dept_image"><img src="images/dept_3.jpg" alt=""></div>
+						<div class="dept_image"><img src="caremedimages/d3.jpg" alt="" style="height:175px;width:275px"></div>
 						<div class="dept_content text-center">
 							<div class="dept_title">dentistry</div>
-							<div class="dept_subtitle">Dr. Amrita Gogia</div>Consultant
 						</div>
 					</div>
 				</div>
@@ -287,10 +276,9 @@
 				<!-- Department -->
 				<div class="col-lg-3 col-md-6 dept_col">
 					<div class="dept">
-						<div class="dept_image"><img src="images/dept_3.jpg" alt=""></div>
+						<div class="dept_image"><img src="caremedimages/d4.jpg" alt="" style="height:175px;width:275px"></div>
 						<div class="dept_content text-center">
 							<div class="dept_title">radiation oncology</div>
-							<div class="dept_subtitle">Dr. Tejinder Kataria</div>Chairperson
 						</div>
 					</div>
 				</div>
@@ -299,10 +287,9 @@
 				<!-- Department -->
 				<div class="col-lg-3 col-md-6 dept_col">
 					<div class="dept">
-						<div class="dept_image"><img src="images/dept_3.jpg" alt=""></div>
+						<div class="dept_image"><img src="caremedimages/d5.jpg" alt="" style="height:175px;width:275px"></div>
 						<div class="dept_content text-center">
 							<div class="dept_title">cardiac surgery</div>
-							<div class="dept_subtitle">Dr. Naresh Trehan</div>Chairman & M.D, Medanta
 						</div>
 					</div>
 				</div>
@@ -310,30 +297,27 @@
 				<!-- Department -->
 				<div class="col-lg-3 col-md-6 dept_col">
 						<div class="dept">
-							<div class="dept_image"><img src="images/dept_3.jpg" alt=""></div>
+							<div class="dept_image"><img src="caremedimages/d6.jpg" alt="" style="height:175px;width:275px"></div>
 							<div class="dept_content text-center">
 								<div class="dept_title">nephrology</div>
-								<div class="dept_subtitle">Dr. Narmada Prasad Gupta</div>Chairman 
 							</div>
 						</div>
 					</div>
 				<!-- Department -->
 				<div class="col-lg-3 col-md-6 dept_col">
 						<div class="dept">
-							<div class="dept_image"><img src="images/dept_3.jpg" alt=""></div>
+							<div class="dept_image"><img src="caremedimages/d7.jpg" alt="" style="height:175px;width:275px"></div>
 							<div class="dept_content text-center">
 								<div class="dept_title">urology and andrology</div>
-								<div class="dept_subtitle">Dr. Anil Mandhani</div>Chairman
 							</div>
 						</div>
 					</div>
 				<!-- Department -->
 				<div class="col-lg-3 col-md-6 dept_col">
 						<div class="dept">
-							<div class="dept_image"><img src="images/dept_3.jpg" alt=""></div>
+							<div class="dept_image"><img src="caremedimages/d8.jpg" alt="" style="height:175px;width:275px"></div>
 							<div class="dept_content text-center">
 								<div class="dept_title">gynaecology</div>
-								<div class="dept_subtitle">Dr. Sabhyata Gupta</div>Chairperson
 							</div>
 						</div>
 					</div>														
@@ -341,85 +325,6 @@
 		</div>
 	</div>
 
-	<!-- Services -->
-
-	<div class="services">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title"><h2>Our Featured Services</h2></div>
-				</div>
-			</div>
-			<div class="row services_row">
-				
-				<!-- Service -->
-				<div class="col-lg-4 col-md-6 service_col">
-					<a href="services.html">
-						<div class="service text-center trans_200">
-							<div class="service_icon"><img class="svg" src="images/service_1.svg" alt=""></div>
-							<div class="service_title trans_200">Free Checkups</div>
-							
-						</div>
-					</a>
-				</div>
-
-				<!-- Service -->
-				<div class="col-lg-4 col-md-6 service_col">
-					<a href="services.html">
-						<div class="service text-center trans_200">
-							<div class="service_icon"><img class="svg" src="images/service_2.svg" alt=""></div>
-							<div class="service_title trans_200">Screening Exams</div>
-							
-						</div>
-					</a>
-				</div>
-
-				<!-- Service -->
-				<div class="col-lg-4 col-md-6 service_col">
-					<a href="services.html">
-						<div class="service text-center trans_200">
-							<div class="service_icon"><img class="svg" src="images/service_3.svg" alt=""></div>
-							<div class="service_title trans_200">RMI Services</div>
-							
-						</div>
-					</a>
-				</div>
-
-				<!-- Service -->
-				<div class="col-lg-4 col-md-6 service_col">
-					<a href="services.html">
-						<div class="service text-center trans_200">
-							<div class="service_icon"><img class="svg" src="images/service_4.svg" alt=""></div>
-							<div class="service_title trans_200">Dentistry</div>
-							
-						</div>
-					</a>
-				</div>
-
-				<!-- Service -->
-				<div class="col-lg-4 col-md-6 service_col">
-					<a href="services.html">
-						<div class="service text-center trans_200">
-							<div class="service_icon"><img class="svg" src="images/service_5.svg" alt=""></div>
-							<div class="service_title trans_200">Neonatology</div>
-							
-						</div>
-					</a>
-				</div>
-
-				<!-- Service -->
-				<div class="col-lg-4 col-md-6 service_col">
-					<a href="services.html">
-						<div class="service text-center trans_200">
-							<div class="service_icon"><img class="svg" src="images/service_6.svg" alt=""></div>
-							<div class="service_title trans_200">Biochemistry</div>
-							
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<!-- Call to action -->
 
