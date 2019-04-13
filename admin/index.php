@@ -34,7 +34,7 @@
                 echo('<script type="text/javascript">
                         alert("All fields are compulsary");
                     </script>');
-            if($username=="admin"&&$password="1234")
+            if($username=="admin"&&$password=="1234")
             {
                 $_SESSION['username']=$username;
 				$_SESSION['password']=$password;
