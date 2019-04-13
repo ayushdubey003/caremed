@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-<title>Doctor</title>
+<title>Receptionist</title>
 <link rel="icon" href="../images/logo.png" type="image/gif" sizes="16x16">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,8 +20,33 @@
 <body>
 
 <?php
-    session_start();
+	session_start();
+	unset($_SESSION['username']);
+	unset($_SESSION['password']);
 	require 'header.html';
+	if(isset($_POST['but']))
+    {
+        if(isset($_POST['username'])&&isset($_POST['pass']))
+        {
+            $username=$_POST['username'];
+            $password=$_POST['pass'];
+            if(strlen($username)==0||strlen($password)==0)
+                echo('<script type="text/javascript">
+                        alert("All fields are compulsary");
+                    </script>');
+            if($username=="admin"&&$password="1234")
+            {
+                $_SESSION['username']=$username;
+				$_SESSION['password']=$password;
+				header("Location: adminhome.php");
+            }
+            else
+                echo('<script type="text/javascript">
+                        alert("Wrong username or password");
+                    </script>');
+        }
+    }
+
 ?>
 
 <div class="super_container">
@@ -38,7 +61,7 @@
 	<!-- News -->
 
 	<div class="about">
-                <form action="doctor.php" method="POST">
+                <form action="index.php" method="POST">
                     <p style="color:#000000;font-size:20px;margin-left:45%">Username : </p><input type="text" name="username" style="width: 60%;padding: 12px 20px;margin-left: 20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>
                     <p style="color:#000000;font-size:20px;margin-left:45%">Password : </p><input type="password" name="pass" style="width: 60%;padding: 12px 20px;margin-left:20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>
                     <button style="margin-top:10px;margin-left:46%;margin-bottom:100px;padding:12px 20px;background:#283290;color:#FFFFFF;border-color:#283290" name="but">LOG IN</button>
@@ -81,30 +104,7 @@
 					
 				</div>
 			</div>
-		</div>
-
-		<div class="copyright">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						<div class="copyright_content d-flex flex-lg-row flex-column align-items-lg-center justify-content-start">
-							<div class="cr"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
-							<div class="footer_social ml-lg-auto">
-								<ul>
-									<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-									<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-									<li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-									<li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
-									<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>			
+		</div>		
 		</div>
 	</footer>
 </div>
@@ -133,19 +133,3 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 </body>
 </html>
-
-
-<?php
-    if(isset($_POST['but']))
-    {
-        if(isset($_POST['username'])&&isset($_POST['pass']))
-        {
-            $username=$_POST['username'];
-            $password=$_POST['pass'];
-            if(strlen($username)==0||strlen($password)==0)
-                die('<script type="text/javascript">
-                        alert("All fields are compulsary");
-                    </script>');
-        }
-    }
-?>
