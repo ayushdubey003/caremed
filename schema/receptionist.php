@@ -18,7 +18,7 @@
 
     if (mysqli_query($conn, $sql)) {
     } else {
-        echo "Error creating table: " . mysqli_error($conn);
+        //echo "Error creating table: " . mysqli_error($conn);
     }
 
     mysqli_close($conn);

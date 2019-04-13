@@ -6,5 +6,5 @@
 
     }
     else
-        echo "Error connecting to database";
+       // echo "Error connecting to database";
 ?>

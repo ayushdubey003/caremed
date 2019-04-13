@@ -6,7 +6,7 @@
     if($conn){
 
     }
-    else
-        die("Error establisihing mysql connection");
+    //else
+      //  die("Error establisihing mysql connection");
        
 ?>

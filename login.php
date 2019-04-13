@@ -37,7 +37,7 @@
 	<!-- News -->
 
 	<div class="about">
-		<div class="container"><H2>SIGN IN</H2>
+		<div class="container"><H2>LOG IN</H2>
 			<div class="row">
 
 				<!-- About Content -->
@@ -46,9 +46,15 @@
 
 
 <BR><BR><BR><BR><BR>
-
-					
+				<div class="button home_button">
+					<a href="login/doctor.php" style="width:300px;text-align:center">Doctor Log in</a>
 				</div>
+				<br><br>
+				<div class="button home_button">
+					<a href="login/receptionist.php" style="width:300px;text-align:center">Receptionist Log in</a>
+				</div>
+					
+			</div>
 
 				<!-- Boxes -->
 				<div class="col-lg-4 boxes_col">
