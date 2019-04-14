@@ -14,7 +14,6 @@
     firstname VARCHAR(100) NOT NULL,
     lastname VARCHAR(100) NOT NULL,
     department VARCHAR(100) NOT NULL,
-    available INTEGER DEFAULT 0,
     nurseId INTEGER,
     wardboyId INTEGER,
     FOREIGN KEY(nurseId) REFERENCES nurse(id),

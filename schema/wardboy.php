@@ -12,8 +12,7 @@
     $sql = "CREATE TABLE wardboy (
     id INTEGER AUTO_INCREMENT PRIMARY KEY, 
     firstname VARCHAR(100) NOT NULL,
-    lastname VARCHAR(100) NOT NULL,
-    assigned INTEGER DEFAULT 0
+    lastname VARCHAR(100) NOT NULL
     )";
 
     if (mysqli_query($conn, $sql)) {

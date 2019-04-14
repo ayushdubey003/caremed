@@ -15,11 +15,29 @@
 <link rel="stylesheet" type="text/css" href="../styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="../styles/responsive.css">
 
+<div class="header_container">
+            <div class="container">
+                <div class="row"><br><br><center> <img src="../images/logo.png"> </center>
+                    <div class="col">
+                        <div class="header_content d-flex flex-row align-items-center justify-content-start">
+                            <nav class="main_nav ml-auto">
+                                    
+                                <ul>
+                                    <li><a href="../index.php">Home</a></li>
+                                </ul>
+                            </nav>
+                            <div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
 </head>
 <body>
+
 
 <?php
 	session_start();

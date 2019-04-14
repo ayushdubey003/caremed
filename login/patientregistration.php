@@ -4,11 +4,10 @@
     if(empty($id))
         die("You are not authorized to access this page");
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Receptionist Home</title>
+<title>Receptionist</title>
 <link rel="icon" href="../images/logo.png" type="image/gif" sizes="16x16">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,6 +20,7 @@
 <link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/animate.css">
 <link rel="stylesheet" type="text/css" href="../styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="../styles/responsive.css">
+
 <div class="header_container">
             <div class="container">
                 <div class="row"><br><br><center> <img src="../images/logo.png"> </center>
@@ -30,7 +30,6 @@
                                     
                                 <ul>
                                     <li><a href="../index.php">Home</a></li>
-                                    <li><a href="receptionist.php">Log Out</a></li>
                                 </ul>
                             </nav>
                             <div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
@@ -48,16 +47,43 @@
 <?php
     @session_start();
     $id=$_SESSION['username'];
-    echo '<div class="super_container">';
-    echo '<div class="home_background parallax-window" data-parallax="scroll" data-image-src="../images/news.jpg" data-speed="0.8"></div>';
-    echo '<div class="about">';
-    echo '<div class="button home_button" style="margin-left:35%">
-            <a href="patientregistration.php" style="width:300px;text-align:center">Patient Registration</a>
-         </div>';
-    echo '<div class="button home_button" style="margin-left:35%;margin-bottom:200px">
-         <a href="login/receptionist.php" style="width:300px;text-align:center">Patient Details Update</a>
-    </div>';
 ?>
+
+<div class="super_container">
+	
+	<!-- Home -->
+
+
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="../images/news.jpg" data-speed="0.8"></div>
+		
+	
+
+	<!-- News -->
+
+	<div class="about">
+                <form action="receptionist.php" method="POST">
+                    <p style="color:#000000;font-size:20px;margin-left:45%">First Name : </p><input type="text" name="fname" style="width: 60%;padding: 12px 20px;margin-left: 20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>
+                    <p style="color:#000000;font-size:20px;margin-left:45%">Last Name : </p><input type="password" name="lname" style="width: 60%;padding: 12px 20px;margin-left:20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>
+                    <p style="color:#000000;font-size:20px;margin-left:45%">Gender* :<br></p>
+                    <p style="color:#000000;font-size:20px;margin-left:27%"> 
+                        <input type="radio" name="gender" value="1" checked  style="margin-left:20%"> Male
+                        <input type="radio" name="gender" value="2" style="margin-left:20px;"> Female<br>
+                    </p> 
+                    <p style="color:#000000;font-size:20px;margin-left:35%">Symptoms associated with Department: * :</p>
+			        <p style="color:#000000;font-size:20px;margin-left:20%">
+				        <select style="width:75%;padding:8px" name="dept">
+                            <option value="1">Department of Plastic Surgery</option>
+                            <option value="2">Department of Gastroenterology</option>
+                            <option value="3">Department of Dentistry</option>
+                            <option value="4">Department of Radiation Oncology</option>
+                            <option value="5">Department of Cardiac Surgery</option>
+                            <option value="6">Department of Nephrology</option>
+                            <option value="7">Department of Urology and Andrology</option>
+                            <option value="8">Department of Gynaecology</option>
+				        </select>
+                    </p>
+                    <button style="margin-top:10px;margin-left:46%;margin-bottom:100px;padding:12px 20px;background:#283290;color:#FFFFFF;border-color:#283290" name="but">LOG IN</button>
+                </form>
 
 	<!-- Footer -->
 
@@ -148,3 +174,19 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 </body>
 </html>
+
+
+<?php
+    if(isset($_POST['but']))
+    {
+        if(isset($_POST['username'])&&isset($_POST['pass']))
+        {
+            $username=$_POST['username'];
+            $password=$_POST['pass'];
+            if(strlen($username)==0||strlen($password)==0)
+                die('<script type="text/javascript">
+                        alert("All fields are compulsary");
+                    </script>');
+        }
+    }
+?>
