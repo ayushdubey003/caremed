@@ -66,23 +66,22 @@
                 $text="Dear User,\nYour username is $email and password is $password. Please use it to Login in the future";
                 $headers="From: ayushdubey957@gmx.com";
                 if(mail($email,$subject,$text,$headers)){
-					$department="a";
 					$tablename="doctor";
-					if($depat==1)
+					if($depat=="1")
 						$department="Department of Plastic Surgery";
-					else if($depat==2)
+					else if($depat=="2")
 						$department="Department of Gastroenterology";
-					else if($depat==2)
+					else if($depat=="3")
 						$department="Department of Dentistry";
-					else if($depat==2)
+					else if($depat=="4")
 						$department="Department of Radiation Oncology";
-					else if($depat==2)
+					else if($depat=="5")
 						$department="Department of Cardiac Surgery";
-					else if($depat==2)
+					else if($depat=="6")
 						$department="Department of Nephrology";
-					else if($depat==2)
+					else if($depat=="7")
 						$department="Department of Urology and Andrology";
-					else if($depat==2)
+					else if($depat=="8")
 						$department="Department of Gynaecology";
                     $query="INSERT INTO $tablename(id,firstname,lastname,department,pass,gender,qualification)
                             VALUES('$email','$fname','$lname','$department','$encpassword','$gender','$qualification')";
