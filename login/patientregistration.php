@@ -142,7 +142,7 @@
                             <option value="8">Department of Gynaecology</option>
 				        </select>
                     </p>
-                    <button style="margin-top:10px;margin-left:46%;margin-bottom:100px;padding:12px 20px;background:#283290;color:#FFFFFF;border-color:#283290" name="but">LOG IN</button>
+                    <button style="margin-top:10px;margin-left:46%;margin-bottom:100px;padding:12px 20px;background:#283290;color:#FFFFFF;border-color:#283290" name="but">REGISTER</button>
                 </form>
 
 	<!-- Footer -->

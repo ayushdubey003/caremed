@@ -21,12 +21,13 @@
     cash INTEGER,
     epayment INTEGER,
     doctorId VARCHAR(100) NOT NULL,
+    aadhar VARCHAR(100) UNIQUE NOT NULL,
     FOREIGN KEY(doctorId) REFERENCES doctor(id)
     )";
 
     if (mysqli_query($conn, $sql)) {
     } else {
-        //echo "Error creating table: " . mysqli_error($conn);
+        echo "Error creating table: " . mysqli_error($conn);
     }
 
     mysqli_close($conn);
