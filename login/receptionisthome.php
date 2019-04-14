@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Receptionist</title>
+<title>Doctor</title>
 <link rel="icon" href="../images/logo.png" type="image/gif" sizes="16x16">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,50 +14,29 @@
 <link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/animate.css">
 <link rel="stylesheet" type="text/css" href="../styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="../styles/responsive.css">
-
+<div class="header_container">
+            <div class="container">
+                <div class="row"><br><br><center> <img src="../images/logo.png"> </center>
+                    <div class="col">
+                        <div class="header_content d-flex flex-row align-items-center justify-content-start">
+                            <nav class="main_nav ml-auto">
+                                    
+                                <ul>
+                                    <li><a href="../index.php">Home</a></li>
+                                    <li><a href="doctor.php">Log Out</a></li>
+                                </ul>
+                            </nav>
+                            <div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
 </head>
 <body>
-
-<?php
-	session_start();
-	unset($_SESSION['username']);
-	//require 'header.html';
-	$servername = "localhost";
-    $username = "Ayush";
-    $password = "abcdefgh";
-    $dbname = "medanta";
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	if(isset($_POST['but']))
-	{
-		@$email=$_POST['username'];
-		@$pass=$_POST['pass'];
-		if(empty($email)||empty($pass))
-		{
-			echo('<script type="text/javascript">
-						alert("All fields are compulsary");
-				</script>');
-		}
-		else
-		{
-			$encpass=md5($pass);
-			$query="SELECT * FROM receptionist WHERE id='$email' AND pass='$encpass'";
-			$result=mysqli_query($conn,$query);
-			
-			if(mysqli_num_rows($result)>0)
-			{
-				$_SESSION['username']=$email;
-				header("Location: receptionisthome.php");
-			}
-			else
-				echo('<script type="text/javascript">
-					alert("Invalid username or password");
-				</script>');
-		}
-	}
-?>
 
 <div class="super_container">
 	
@@ -71,11 +50,6 @@
 	<!-- News -->
 
 	<div class="about">
-                <form action="receptionist.php" method="POST">
-                    <p style="color:#000000;font-size:20px;margin-left:45%">Username : </p><input type="text" name="username" style="width: 60%;padding: 12px 20px;margin-left: 20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>
-                    <p style="color:#000000;font-size:20px;margin-left:45%">Password : </p><input type="password" name="pass" style="width: 60%;padding: 12px 20px;margin-left:20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>
-                    <button style="margin-top:10px;margin-left:46%;margin-bottom:100px;padding:12px 20px;background:#283290;color:#FFFFFF;border-color:#283290" name="but">LOG IN</button>
-                </form>
 
 	<!-- Footer -->
 
@@ -166,19 +140,3 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 </body>
 </html>
-
-
-<?php
-    if(isset($_POST['but']))
-    {
-        if(isset($_POST['username'])&&isset($_POST['pass']))
-        {
-            $username=$_POST['username'];
-            $password=$_POST['pass'];
-            if(strlen($username)==0||strlen($password)==0)
-                die('<script type="text/javascript">
-                        alert("All fields are compulsary");
-                    </script>');
-        }
-    }
-?>

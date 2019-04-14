@@ -14,16 +14,64 @@
 <link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/animate.css">
 <link rel="stylesheet" type="text/css" href="../styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="../styles/responsive.css">
-
+<div class="header_container">
+            <div class="container">
+                <div class="row"><br><br><center> <img src="../images/logo.png"> </center>
+                    <div class="col">
+                        <div class="header_content d-flex flex-row align-items-center justify-content-start">
+                            <nav class="main_nav ml-auto">
+                                    
+                                <ul>
+                                    <li><a href="../index.php">Home</a></li>
+                                </ul>
+                            </nav>
+                            <div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
 </head>
 <body>
-
 <?php
-    session_start();
-	require 'header.html';
+	session_start();
+	unset($_SESSION['username']);
+	//require 'header.html';
+	$servername = "localhost";
+    $username = "Ayush";
+    $password = "abcdefgh";
+    $dbname = "medanta";
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
+	if(isset($_POST['but']))
+	{
+		@$email=$_POST['username'];
+		@$pass=$_POST['pass'];
+		if(empty($email)||empty($pass))
+		{
+			echo('<script type="text/javascript">
+						alert("All fields are compulsary");
+				</script>');
+		}
+		else
+		{
+			$encpass=md5($pass);
+			$query="SELECT * FROM doctor WHERE id='$email' AND pass='$encpass'";
+			$result=mysqli_query($conn,$query);
+			
+			if(mysqli_num_rows($result)>0)
+			{
+				$_SESSION['username']=$email;
+				header("Location: doctorhome.php");
+			}
+			else
+				echo('<script type="text/javascript">
+					alert("Invalid username or password");
+				</script>');
+		}
+	}
 ?>
 
 <div class="super_container">
@@ -133,19 +181,3 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 </body>
 </html>
-
-
-<?php
-    if(isset($_POST['but']))
-    {
-        if(isset($_POST['username'])&&isset($_POST['pass']))
-        {
-            $username=$_POST['username'];
-            $password=$_POST['pass'];
-            if(strlen($username)==0||strlen($password)==0)
-                die('<script type="text/javascript">
-                        alert("All fields are compulsary");
-                    </script>');
-        }
-    }
-?>
