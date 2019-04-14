@@ -1,13 +1,13 @@
 <?php
     session_start();
     @$id=$_SESSION['username'];
-    if(empty($id))
+    if(!isset($id))
         die("You are not authorized to access this page");
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Receptionist</title>
+<title>Assign a doctor</title>
 <link rel="icon" href="../images/logo.png" type="image/gif" sizes="16x16">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,7 +29,7 @@
                             <nav class="main_nav ml-auto">
                                     
                                 <ul>
-                                    <li><a href="../index.php">Home</a></li>
+                                    <li><a href="patientregistration.php">Home</a></li>
                                 </ul>
                             </nav>
                             <div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
@@ -43,99 +43,44 @@
 
 </head>
 <body>
-
 <?php
     @session_start();
-	$id=$_SESSION['username'];
-	$servername = "localhost";
+    $department=$_SESSION['dept'];
+    $servername = "localhost";
     $username = "Ayush";
     $password = "abcdefgh";
     $dbname = "medanta";
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	if(isset($_POST['but']))
-	{
-		$fname=$_POST['fname'];
-        $lname=$_POST['lname'];
-		$gender=$_POST['gender'];
-		$depat=$_POST['dept'];
-		if(empty($fname)||empty($lname)||empty($depat)||empty($gender))
-        {
-            echo('<script type="text/javascript">
-                    alert("All fields are compulsary");
-                </script>');
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    $sql  = "SELECT id, firstname, lastname FROM doctor WHERE department=\"$department\"";
+    $query1  = "SELECT id, firstname, lastname FROM nurse";
+    $query2  = "SELECT id, firstname, lastname FROM wardboy";
+
+    $result = mysqli_query($conn, $sql);
+    $nurse = mysqli_query($conn,$query1);
+    $wardboy = mysqli_query($conn,$query2);
+
+    echo '<div class="super_container">
+		    <div class="home_background parallax-window" data-parallax="scroll" data-image-src="../images/news.jpg" data-speed="0.8"></div>
+        <div class="about">
+            <p style="color:#000000;font-size:20px;margin-left:17%"> ';
+    echo 'Doctors Available:  ';
+    echo '<select style="width:75%;padding:8px" name="doctor">';
+    if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+        while($row = mysqli_fetch_assoc($result)) {
+            $id=$row['id'];
+            $fname=$row['firstname'];
+            $lname=$row['lastname'];
+            $name=$fname.' '.$lname;
+            echo '<option value="$id">'.$name.'</option>';
         }
-        else if (!preg_match("/^[a-zA-Z]*$/",$fname)||!preg_match("/^[a-zA-Z]*$/",$lname)) {
-            echo "<script type='text/javascript'>
-            alert('Only Letters allowed');
-            </script>";
-		}
-		else
-		{
-			$tablename="patient";
-			if($depat=="1")
-				$department="Department of Plastic Surgery";
-			else if($depat=="2")
-				$department="Department of Gastroenterology";
-			else if($depat=="3")
-				$department="Department of Dentistry";
-			else if($depat=="4")
-				$department="Department of Radiation Oncology";
-			else if($depat=="5")
-				$department="Department of Cardiac Surgery";
-			else if($depat=="6")
-				$department="Department of Nephrology";
-			else if($depat=="7")
-				$department="Department of Urology and Andrology";
-			else if($depat=="8")
-				$department="Department of Gynaecology";
-			$_SESSION['dept']=$department;
-			$query="INSERT INTO $tablename(firstname,lastname,gender)
-                            VALUES('$fname','$lname','$gender')";
-            if(mysqli_query($conn,$query))
-				header("Location: assigndoctor.php");
-			else
-				echo('<script type="text/javascript">
-					alert("Error inserting");
-				</script>');
-		}
-	}
+    }
+    else {
+        echo "No doctors available";
+    }
+    echo '</div>';
 ?>
 
-<div class="super_container">
-	
-	<!-- Home -->
-
-
-		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="../images/news.jpg" data-speed="0.8"></div>
-		
-	
-
-	<!-- News -->
-
-	<div class="about">
-                <form action="patientregistration.php" method="POST">
-                    <p style="color:#000000;font-size:20px;margin-left:45%">First Name : </p><input type="text" name="fname" style="width: 60%;padding: 12px 20px;margin-left: 20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>
-                    <p style="color:#000000;font-size:20px;margin-left:45%">Last Name : </p><input type="text" name="lname" style="width: 60%;padding: 12px 20px;margin-left:20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>
-                    <p style="color:#000000;font-size:20px;margin-left:45%">Gender* :<br></p>
-                    <p style="color:#000000;font-size:20px;margin-left:27%"> 
-                        <input type="radio" name="gender" value="1" checked  style="margin-left:20%"> Male
-                        <input type="radio" name="gender" value="2" style="margin-left:20px;"> Female<br>
-                    </p> 
-                    <p style="color:#000000;font-size:20px;margin-left:35%">Symptoms associated with Department: * :</p>
-			        <p style="color:#000000;font-size:20px;margin-left:20%">
-				        <select style="width:75%;padding:8px" name="dept">
-                            <option value="1">Department of Plastic Surgery</option>
-                            <option value="2">Department of Gastroenterology</option>
-                            <option value="3">Department of Dentistry</option>
-                            <option value="4">Department of Radiation Oncology</option>
-                            <option value="5">Department of Cardiac Surgery</option>
-                            <option value="6">Department of Nephrology</option>
-                            <option value="7">Department of Urology and Andrology</option>
-                            <option value="8">Department of Gynaecology</option>
-				        </select>
-                    </p>
-                    <button style="margin-top:10px;margin-left:46%;margin-bottom:100px;padding:12px 20px;background:#283290;color:#FFFFFF;border-color:#283290" name="but">LOG IN</button>
-                </form>
 
 	<!-- Footer -->
 
@@ -226,19 +171,3 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 </body>
 </html>
-
-
-<?php
-    if(isset($_POST['but']))
-    {
-        if(isset($_POST['username'])&&isset($_POST['pass']))
-        {
-            $username=$_POST['username'];
-            $password=$_POST['pass'];
-            if(strlen($username)==0||strlen($password)==0)
-                die('<script type="text/javascript">
-                        alert("All fields are compulsary");
-                    </script>');
-        }
-    }
-?>
