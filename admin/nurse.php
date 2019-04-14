@@ -34,6 +34,11 @@
                 echo('<script type="text/javascript">
                         alert("All fields are compulsary");
                     </script>');
+            } 
+            else if (!preg_match("/^[a-zA-Z]*$/",$fname)||!preg_match("/^[a-zA-Z]*$/",$lname)) {
+                echo "<script type='text/javascript'>
+                alert('Only Letters allowed');
+                </script>";
             }
             else
             {
