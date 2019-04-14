@@ -92,7 +92,15 @@
 			$query="INSERT INTO $tablename(firstname,lastname,gender)
                             VALUES('$fname','$lname','$gender')";
             if(mysqli_query($conn,$query))
+			{
+				$sql  = "SELECT id FROM patient ORDER BY id DESC LIMIT 1";
+				$result = mysqli_query($conn, $sql);
+				if (mysqli_num_rows($result) > 0) {
+					while($row = mysqli_fetch_assoc($result)) 
+						$_SESSION['patientid']=$row['id'];
+				}
 				header("Location: assigndoctor.php");
+			}
 			else
 				echo('<script type="text/javascript">
 					alert("Error inserting");

@@ -61,44 +61,67 @@
 
     echo '<div class="super_container">
 		    <div class="home_background parallax-window" data-parallax="scroll" data-image-src="../images/news.jpg" data-speed="0.8"></div>';
-    echo '<div class="about"><select style="width:15%;padding:8px;margin-left:15%;" name="doctor">';
+    echo '<div class="about">';
+    echo '<form action="assigndoctor.php" method="POST">';
+    echo '<select style="width:15%;padding:8px;margin-left:15%;" name="doctor">';
     if (mysqli_num_rows($result) > 0) {
-    // output data of each row
-        echo '<option value=" ">Select Doctor</option>';
+        echo '<option value="-1">Select Doctor</option>';
         while($row = mysqli_fetch_assoc($result)) {
             $id=$row['id'];
             $fname=$row['firstname'];
             $lname=$row['lastname'];
             $name=$fname.' '.$lname;
-            echo '<option value="$id">'.$name.'</option>';
+            echo '<option value="'.$id.'">'.$name.'</option>';
         }
         echo "</select>";
         echo '<select style="width:15%;padding:8px;margin-left:10%;" name="nurse">';
         if (mysqli_num_rows($nurse) > 0) {
             // output data of each row
-            echo '<option value=" ">Select Nurse</option>';
+            echo '<option value="-1">Select Nurse</option>';
                 while($row = mysqli_fetch_assoc($nurse)) {
                     $id=$row['id'];
                     $fname=$row['firstname'];
                     $lname=$row['lastname'];
                     $name=$fname.' '.$lname;
-                    echo '<option value="$id">'.$name.'</option>';
+                    echo '<option value="'.$id.'">'.$name.'</option>';
                 }
             }
         echo "</select>";
         echo '<select style="width:15%;padding:8px;margin-top:1px;margin-left:10%;" name="wardboy">';
         if (mysqli_num_rows($wardboy) > 0) {
             // output data of each row
-            echo '<option value=" ">Select Wardboy</option>';
+            echo '<option value="-1">Select Wardboy</option>';
                 while($row = mysqli_fetch_assoc($wardboy)) {
                     $id=$row['id'];
                     $fname=$row['firstname'];
                     $lname=$row['lastname'];
                     $name=$fname.' '.$lname;
-                    echo '<option value="$id">'.$name.'</option>';
+                    echo '<option value="'.$id.'">'.$name.'</option>';
                 }
             }
         echo "</select>";
+        echo '<button style="margin-top:50px;margin-left:40%;margin-bottom:100px;padding:12px 20px;background:#283290;color:#FFFFFF;border-color:#283290" name="but">PROCEED TO PAY BILL</button>
+        </form></div>';
+
+        $pid=$_SESSION['patientid'];
+        if(isset($_POST['but']))
+        {
+            $tablename="patient";
+            $did=$_POST['doctor'];
+            $nid=$_POST['nurse'];
+            $wid=$_POST['wardboy'];
+            if($did==-1||$nid==-1||$wid==-1)
+            {
+                echo('<script type="text/javascript">
+						alert("All fields are compulsary");
+				</script>');
+            }
+            else
+            {
+                $update="UPDATE patient SET doctorId='$did', nurseId='$nid', wardboyId='$wid',admitted='1' WHERE id=$pid";
+                mysqli_query($conn,$update);
+            }
+        }
     }
     else {
         echo "No doctors available";
@@ -106,10 +129,7 @@
     echo '</div>';
 ?>
 
-<div class="about">
-                <form action="assigndoctor.php" method="POST">
-                    <button style="margin-top:1px;margin-left:40%;margin-bottom:100px;padding:12px 20px;background:#283290;color:#FFFFFF;border-color:#283290" name="but">PROCEED TO PAY BILL</button>
-                </form>
+
 	<!-- Footer -->
 
 	<footer class="footer">
