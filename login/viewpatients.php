@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Doctor</title>
+<title>View Patients</title>
 <link rel="icon" href="../images/logo.png" type="image/gif" sizes="16x16">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,6 +37,7 @@
 
 </head>
 <body>
+
 <div class="super_container">
 	
 	<!-- Home -->
@@ -49,14 +50,35 @@
 	<!-- News -->
 
 	<div class="about">
-	<?php
-		@session_start();
-		$username=$_SESSION['username'];
-	?>
-		<div class="button home_button" style="margin-left:40%;margin-bottom:150px">
-					<a href="viewpatients.php" style="width:300px;text-align:center">View assigned patients</a>
-				</div>
-
+     <p style="font-size:40px;color:#000000;text-align:center">Patients Assigned:</p><br>
+    <p style="font-size:30px;color:	rgba(0,0,0,0.8);font-family:'../fonts/font.ttf';text-align:center;margin-bottom:150px">
+    <?php
+        session_start();
+        $email=$_SESSION['username'];
+        $servername = "localhost";
+        $username = "Ayush";
+        $password = "abcdefgh";
+        $dbname = "medanta";
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $tablename="patient";
+        $sql  = "SELECT firstname, lastname FROM patient WHERE doctorId='$email'";
+        $result=mysqli_query($conn,$sql);
+        $u=1;
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                $fname=$row['firstname'];
+                $lname=$row['lastname'];
+                $name=$fname.' '.$lname;
+                echo "$u) $name<br>";
+                $u=$u+1;
+            }
+        }
+        else
+        {
+            echo "No Patients assigned";
+        }
+    ?>
+    </p>
 	<footer class="footer">
 	<div class="footer_container">
 			<div class="container">
