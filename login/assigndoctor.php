@@ -60,13 +60,11 @@
     $wardboy = mysqli_query($conn,$query2);
 
     echo '<div class="super_container">
-		    <div class="home_background parallax-window" data-parallax="scroll" data-image-src="../images/news.jpg" data-speed="0.8"></div>
-        <div class="about">
-            <p style="color:#000000;font-size:20px;margin-left:17%"> ';
-    echo 'Doctors Available:  ';
-    echo '<select style="width:75%;padding:8px" name="doctor">';
+		    <div class="home_background parallax-window" data-parallax="scroll" data-image-src="../images/news.jpg" data-speed="0.8"></div>';
+    echo '<div class="about"><select style="width:15%;padding:8px;margin-left:15%;" name="doctor">';
     if (mysqli_num_rows($result) > 0) {
     // output data of each row
+        echo '<option value=" ">Select Doctor</option>';
         while($row = mysqli_fetch_assoc($result)) {
             $id=$row['id'];
             $fname=$row['firstname'];
@@ -74,6 +72,33 @@
             $name=$fname.' '.$lname;
             echo '<option value="$id">'.$name.'</option>';
         }
+        echo "</select>";
+        echo '<select style="width:15%;padding:8px;margin-left:10%;" name="nurse">';
+        if (mysqli_num_rows($nurse) > 0) {
+            // output data of each row
+            echo '<option value=" ">Select Nurse</option>';
+                while($row = mysqli_fetch_assoc($nurse)) {
+                    $id=$row['id'];
+                    $fname=$row['firstname'];
+                    $lname=$row['lastname'];
+                    $name=$fname.' '.$lname;
+                    echo '<option value="$id">'.$name.'</option>';
+                }
+            }
+        echo "</select>";
+        echo '<select style="width:15%;padding:8px;margin-top:1px;margin-left:10%;" name="wardboy">';
+        if (mysqli_num_rows($wardboy) > 0) {
+            // output data of each row
+            echo '<option value=" ">Select Wardboy</option>';
+                while($row = mysqli_fetch_assoc($wardboy)) {
+                    $id=$row['id'];
+                    $fname=$row['firstname'];
+                    $lname=$row['lastname'];
+                    $name=$fname.' '.$lname;
+                    echo '<option value="$id">'.$name.'</option>';
+                }
+            }
+        echo "</select>";
     }
     else {
         echo "No doctors available";
@@ -81,7 +106,10 @@
     echo '</div>';
 ?>
 
-
+<div class="about">
+                <form action="assigndoctor.php" method="POST">
+                    <button style="margin-top:1px;margin-left:40%;margin-bottom:100px;padding:12px 20px;background:#283290;color:#FFFFFF;border-color:#283290" name="but">PROCEED TO PAY BILL</button>
+                </form>
 	<!-- Footer -->
 
 	<footer class="footer">
