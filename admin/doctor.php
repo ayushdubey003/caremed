@@ -24,6 +24,82 @@
         $password = "abcdefgh";
         $dbname = "medanta";
         $conn = mysqli_connect($servername, $username, $password, $dbname);
+        if(isset($_POST['but']))
+        {
+            $fname=$_POST['fname'];
+            $lname=$_POST['lname'];
+			$email=$_POST['email'];
+			$depat=$_POST['dept'];
+			$gender=$_POST['gender'];
+			$qualification=$_POST['qualification'];
+            if(empty($fname)||empty($lname)||empty($email)||empty($depat)||empty($gender)||empty($qualification))
+            {
+                echo('<script type="text/javascript">
+                        alert("All fields are compulsary");
+                    </script>');
+            }
+            else if (!preg_match("/^[a-zA-Z]*$/",$fname)||!preg_match("/^[a-zA-Z]*$/",$lname)) {
+                echo "<script type='text/javascript'>
+                alert('Only Letters allowed');
+                </script>";
+            }
+            else
+            {
+                $password=rand(10000,99999);
+                $mod=1000000007;
+                for($i=0;$i<5;$i++)
+                {
+                    $password=$password*rand(10000,99999);
+                    $password=$password%$mod;
+                }
+                $encpassword=md5($password);
+                $query="SELECT * FROM doctor WHERE username='$email'";
+                $result=mysqli_query($conn,$query);
+                if(mysqli_num_rows($result)>0)
+                {
+                    echo "<script type='text/javascript'>
+                    alert('Email id already registered');
+                    </script>";
+                    die();
+                }
+                $subject="Do not Reply";
+                $text="Dear User,\nYour username is $email and password is $password. Please use it to Login in the future";
+                $headers="From: ayushdubey957@gmx.com";
+                if(mail($email,$subject,$text,$headers)){
+					$department="a";
+					$tablename="doctor";
+					if($depat==1)
+						$department="Department of Plastic Surgery";
+					else if($depat==2)
+						$department="Department of Gastroenterology";
+					else if($depat==2)
+						$department="Department of Dentistry";
+					else if($depat==2)
+						$department="Department of Radiation Oncology";
+					else if($depat==2)
+						$department="Department of Cardiac Surgery";
+					else if($depat==2)
+						$department="Department of Nephrology";
+					else if($depat==2)
+						$department="Department of Urology and Andrology";
+					else if($depat==2)
+						$department="Department of Gynaecology";
+                    $query="INSERT INTO $tablename(id,firstname,lastname,department,pass,gender,qualification)
+                            VALUES('$email','$fname','$lname','$department','$encpassword','$gender','$qualification')";
+                    if(mysqli_query($conn,$query))
+                        echo('<script type="text/javascript">
+                            alert("Insert Succesful");
+                        </script>');;
+                }
+                else
+                {
+                    echo "<script type='text/javascript'>
+                    alert('Error sending mail');
+                    </script>";
+                    die();
+                }
+            }
+        }
     }
     else
         die('You are not authorized to access this page');
@@ -41,7 +117,31 @@
 	<!-- News -->
 
 	<div class="about">
-        
+        <form method="POST" action="doctor.php" style="margin-left:50px;margin-bottom:100px">
+            <p style="color:#000000;font-size:20px;margin-left:45%">Email * : </p><input type="email" name="email" style="width: 60%;padding: 12px 20px;margin-left: 20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>
+            <p style="color:#000000;font-size:20px;margin-left:45%">First Name * : </p><input type="text" name="fname" style="width: 60%;padding: 12px 20px;margin-left: 20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>
+            <p style="color:#000000;font-size:20px;margin-left:45%">Last Name * : </p><input type="text" name="lname" style="width: 60%;padding: 12px 20px;margin-left:20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>
+			<p style="color:#000000;font-size:20px;margin-left:45%">Department* :</p>
+			<p style="color:#000000;font-size:20px;margin-left:20%">
+				<select style="width:75%;padding:8px" name="dept">
+					<option value="1">Department of Plastic Surgery</option>
+					<option value="2">Department of Gastroenterology</option>
+					<option value="3">Department of Dentistry</option>
+					<option value="4">Department of Radiation Oncology</option>
+					<option value="5">Department of Cardiac Surgery</option>
+					<option value="6">Department of Nephrology</option>
+					<option value="7">Department of Urology and Andrology</option>
+					<option value="8">Department of Gynaecology</option>
+				</select>
+			</p>
+			<p style="color:#000000;font-size:20px;margin-left:45%">Gender* :<br></p>
+			<p style="color:#000000;font-size:20px;margin-left:27%"> 
+				<input type="radio" name="gender" value="1" checked  style="margin-left:20%"> Male
+				<input type="radio" name="gender" value="2" style="margin-left:20px;"> Female<br>
+			</p> 
+			<p style="color:#000000;font-size:20px;margin-left:45%">Qualification * : </p><input type="text" name="qualification" style="width: 60%;padding: 12px 20px;margin-left: 20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>
+            <button style="margin-top:10px;margin-left:45%;margin-bottom:100px;padding:12px 20px;background:#283290;color:#FFFFFF;border-color:#283290" name="but">REGISTER</button>        
+        </form> 
 
 
 	<!-- Footer -->
