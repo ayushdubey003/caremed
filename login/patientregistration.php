@@ -29,7 +29,7 @@
                             <nav class="main_nav ml-auto">
                                     
                                 <ul>
-                                    <li><a href="../index.php">Home</a></li>
+                                    <li><a href="receptionisthome.php">Home</a></li>
                                 </ul>
                             </nav>
                             <div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>

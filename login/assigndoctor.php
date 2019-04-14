@@ -29,7 +29,7 @@
                             <nav class="main_nav ml-auto">
                                     
                                 <ul>
-                                    <li><a href="patientregistration.php">Home</a></li>
+                                    <li><a href="receptionisthome.php">Home</a></li>
                                 </ul>
                             </nav>
                             <div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
@@ -120,6 +120,7 @@
             {
                 $update="UPDATE patient SET doctorId='$did', nurseId='$nid', wardboyId='$wid',admitted='1' WHERE id=$pid";
                 mysqli_query($conn,$update);
+                header ("Location: billpayment.php");
             }
         }
     }

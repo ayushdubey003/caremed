@@ -1,14 +1,7 @@
-<?php
-    session_start();
-    @$id=$_SESSION['username'];
-    if(empty($id))
-        die("You are not authorized to access this page");
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Receptionist Home</title>
+<title>Bill Payment</title>
 <link rel="icon" href="../images/logo.png" type="image/gif" sizes="16x16">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,7 +23,6 @@
                                     
                                 <ul>
                                     <li><a href="receptionisthome.php">Home</a></li>
-                                    <li><a href="receptionist.php">Log Out</a></li>
                                 </ul>
                             </nav>
                             <div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
@@ -44,21 +36,56 @@
 
 </head>
 <body>
-
 <?php
-    @session_start();
-    $id=$_SESSION['username'];
-    echo '<div class="super_container">';
-    echo '<div class="home_background parallax-window" data-parallax="scroll" data-image-src="../images/news.jpg" data-speed="0.8"></div>';
-    echo '<div class="about">';
-    echo '<div class="button home_button" style="margin-left:35%">
-            <a href="patientregistration.php" style="width:300px;text-align:center">Patient Registration</a>
-         </div>';
-    echo '<div class="button home_button" style="margin-left:35%;margin-bottom:200px">
-         <a href="login/receptionist.php" style="width:300px;text-align:center">Patient Details Update</a>
-    </div>';
-?>
+	session_start();
+    $pid=$_SESSION['patientid'];
 
+    //require 'header.html';
+    
+    echo '<div class="super_container">
+		    <div class="home_background parallax-window" data-parallax="scroll" data-image-src="../images/news.jpg" data-speed="0.8"></div>';
+    echo '<div class="about">';
+    echo '<form action="billpayment.php" method="POST">';
+    echo '<p style="color:#000000;font-size:20px;margin-left:42%">Enter Total Amount : </p><input type="text" name="totalbill" style="width: 60%;padding: 12px 20px;margin-left: 20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input><br><br>';
+    echo '<p style="color:#000000;font-size:20px;margin-left:42%">Enter Amount Paid : </p><input type="text" name="billpaid" style="width: 60%;padding: 12px 20px;margin-left: 20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>';
+    echo '<p style="color:#000000;font-size:20px;margin-left:27%;margin-top:15px"> 
+                <input type="radio" name="mode" value="1" checked  style="margin-left:20%"> Cash
+                <input type="radio" name="mode" value="2" style="margin-left:20px;"> E-payment<br>
+            </p> ';
+    echo '<button style="margin-top:50px;margin-left:45%;margin-bottom:100px;padding:12px 20px;background:#283290;color:#FFFFFF;border-color:#283290" name="but">FINISH UP</button>
+        </form></div>';
+        $pid=$_SESSION['patientid'];
+        if(isset($_POST['but']))
+        {
+            $servername = "localhost";
+            $username = "Ayush";
+            $password = "abcdefgh";
+            $dbname = "medanta";
+            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            $tablename="patient";
+            $tamt=$_POST['totalbill'];
+            $bill=$_POST['billpaid'];
+            $mode=$_POST['mode'];
+            if(empty($tamt)||empty($bill))
+            {
+                echo('<script type="text/javascript">
+						alert("All fields are compulsary");
+				</script>');
+            }
+            else
+            {
+                if($mode==1)
+                    $mode="cash";
+                else
+                    $mode="epayment";
+                $due=$tamt-$bill;
+                $update="UPDATE patient SET totalbill='$tamt', billpaid='$bill', billdue='$due', $mode='$bill' WHERE id=$pid";
+                mysqli_query($conn,$update);
+                header("Location: receptionisthome.php");
+            }
+        }
+	
+?>
 	<!-- Footer -->
 
 	<footer class="footer">
