@@ -103,7 +103,7 @@
         echo '<button style="margin-top:50px;margin-left:40%;margin-bottom:100px;padding:12px 20px;background:#283290;color:#FFFFFF;border-color:#283290" name="but">PROCEED TO PAY BILL</button>
         </form></div>';
 
-        $pid=$_SESSION['patientid'];
+        $pid=$_SESSION['aadhar'];
         if(isset($_POST['but']))
         {
             $tablename="patient";
@@ -118,7 +118,7 @@
             }
             else
             {
-                $update="UPDATE patient SET doctorId='$did', nurseId='$nid', wardboyId='$wid',admitted='1' WHERE id=$pid";
+                $update="UPDATE patient SET doctorId='$did', nurseId='$nid', wardboyId='$wid',admitted='1' WHERE aadhar=$pid";
                 mysqli_query($conn,$update);
                 header ("Location: billpayment.php");
             }

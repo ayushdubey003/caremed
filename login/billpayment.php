@@ -54,7 +54,7 @@
             </p> ';
     echo '<button style="margin-top:50px;margin-left:45%;margin-bottom:100px;padding:12px 20px;background:#283290;color:#FFFFFF;border-color:#283290" name="but">FINISH UP</button>
         </form></div>';
-        $pid=$_SESSION['patientid'];
+        $pid=$_SESSION['aadhar'];
         if(isset($_POST['but']))
         {
             $servername = "localhost";
@@ -79,7 +79,7 @@
                 else
                     $mode="epayment";
                 $due=$tamt-$bill;
-                $update="UPDATE patient SET totalbill='$tamt', billpaid='$bill', billdue='$due', $mode='$bill' WHERE id=$pid";
+                $update="UPDATE patient SET totalbill='$tamt', billpaid='$bill', billdue='$due', $mode='$bill' WHERE aadhar=$pid";
                 mysqli_query($conn,$update);
                 header("Location: receptionisthome.php");
             }

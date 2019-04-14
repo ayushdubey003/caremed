@@ -20,9 +20,13 @@
     billpaid INTEGER,
     cash INTEGER,
     epayment INTEGER,
-    doctorId VARCHAR(100) NOT NULL,
+    doctorId VARCHAR(100),
+    nurseId INTEGER,
+    wardboyId INTEGER,
     aadhar VARCHAR(100) UNIQUE NOT NULL,
-    FOREIGN KEY(doctorId) REFERENCES doctor(id)
+    FOREIGN KEY(doctorId) REFERENCES doctor(id),
+    FOREIGN KEY(nurseId) REFERENCES nurse(id),
+    FOREIGN KEY(wardboyId) REFERENCES wardboy(id)
     )";
 
     if (mysqli_query($conn, $sql)) {

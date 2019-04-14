@@ -58,7 +58,8 @@
         $lname=$_POST['lname'];
 		$gender=$_POST['gender'];
 		$depat=$_POST['dept'];
-		if(empty($fname)||empty($lname)||empty($depat)||empty($gender))
+		$aadhar=$_POST['aadhar'];
+		if(empty($fname)||empty($lname)||empty($depat)||empty($gender)||empty($aadhar))
         {
             echo('<script type="text/javascript">
                     alert("All fields are compulsary");
@@ -89,16 +90,11 @@
 			else if($depat=="8")
 				$department="Department of Gynaecology";
 			$_SESSION['dept']=$department;
-			$query="INSERT INTO $tablename(firstname,lastname,gender)
-                            VALUES('$fname','$lname','$gender')";
+			$query="INSERT INTO $tablename(aadhar,firstname,lastname,gender)
+                            VALUES('$aadhar','$fname','$lname','$gender')";
             if(mysqli_query($conn,$query))
 			{
-				$sql  = "SELECT id FROM patient ORDER BY id DESC LIMIT 1";
-				$result = mysqli_query($conn, $sql);
-				if (mysqli_num_rows($result) > 0) {
-					while($row = mysqli_fetch_assoc($result)) 
-						$_SESSION['patientid']=$row['id'];
-				}
+				$_SESSION['aadhar']=$aadhar;
 				header("Location: assigndoctor.php");
 			}
 			else
@@ -122,13 +118,14 @@
 
 	<div class="about">
                 <form action="patientregistration.php" method="POST">
+					<p style="color:#000000;font-size:20px;margin-left:45%">Aadhar Number: </p><input type="number" name="aadhar" style="width: 60%;padding: 12px 20px;margin-left: 20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>
                     <p style="color:#000000;font-size:20px;margin-left:45%">First Name : </p><input type="text" name="fname" style="width: 60%;padding: 12px 20px;margin-left: 20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>
                     <p style="color:#000000;font-size:20px;margin-left:45%">Last Name : </p><input type="text" name="lname" style="width: 60%;padding: 12px 20px;margin-left:20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>
                     <p style="color:#000000;font-size:20px;margin-left:45%">Gender* :<br></p>
                     <p style="color:#000000;font-size:20px;margin-left:27%"> 
                         <input type="radio" name="gender" value="1" checked  style="margin-left:20%"> Male
-                        <input type="radio" name="gender" value="2" style="margin-left:20px;"> Female<br>
-                    </p> 
+                        <input type="radio" name="gender" value="2" style="margin-left:20px;"> Female
+                    </p><br>
                     <p style="color:#000000;font-size:20px;margin-left:35%">Symptoms associated with Department: * :</p>
 			        <p style="color:#000000;font-size:20px;margin-left:20%">
 				        <select style="width:75%;padding:8px" name="dept">
