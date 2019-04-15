@@ -18,7 +18,6 @@
 
 </head>
 <body>
-
 <?php
 	session_start();
 	unset($_SESSION['username']);
@@ -29,16 +28,41 @@
         if(isset($_POST['username'])&&isset($_POST['pass']))
         {
             $username=$_POST['username'];
-            $password=$_POST['pass'];
+			$password=$_POST['pass'];			
+			$servername = "localhost";
+			$usernames = "Ayush";
+			$passwords = "abcdefgh";
+			$dbname = "medanta";
+			$conn = mysqli_connect($servername, $usernames, $passwords, $dbname);
+			$sql="SELECT id,pass FROM admin";
+			$result=mysqli_query($conn,$sql);
             if(strlen($username)==0||strlen($password)==0)
                 echo('<script type="text/javascript">
                         alert("All fields are compulsary");
-                    </script>');
-            if($username=="admin"&&$password=="1234")
-            {
-                $_SESSION['username']=$username;
-				$_SESSION['password']=$password;
-				header("Location: adminhome.php");
+					</script>');
+			else if (mysqli_num_rows($result) > 0) {
+				$x=0;
+				while($row = mysqli_fetch_assoc($result)) {
+					$encpass=md5($password);
+					$userid=$row['id'];
+					$pass=$row['pass'];
+					if($userid==$username&&$pass==$encpass)
+					{
+						echo "Here";
+						$x=1;
+						break;
+					}
+				}
+				if($x==1)
+				{
+					$_SESSION['username']=$username;
+					$_SESSION['password']=$password;
+					header("Location: adminhome.php");
+				}
+				else
+                	echo('<script type="text/javascript">
+                        alert("Wrong username or password");
+                    </script>');			
             }
             else
                 echo('<script type="text/javascript">
