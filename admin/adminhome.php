@@ -13,7 +13,15 @@
 <link rel="stylesheet" type="text/css" href="../styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="../styles/responsive.css">
 <?php
-    session_start();
+	session_start();
+	require '../schema/connect.php';
+	require '../schema/createdb.php';
+	require '../schema/nurse.php';
+	require '../schema/wardboy.php';
+	require '../schema/doctor.php';
+	require '../schema/receptionist.php';
+	require '../schema/patient.php';
+	require '../schema/admin.php';
     @$username=$_SESSION['username'];
     @$password=$_SESSION['password'];
     if($username=="admin"&&$password=="1234")

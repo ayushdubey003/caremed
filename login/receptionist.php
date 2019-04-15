@@ -41,6 +41,13 @@
 
 <?php
 	session_start();
+	require '../schema/connect.php';
+	require '../schema/createdb.php';
+	require '../schema/nurse.php';
+	require '../schema/wardboy.php';
+	require '../schema/doctor.php';
+	require '../schema/receptionist.php';
+	require '../schema/patient.php';
 	unset($_SESSION['username']);
 	//require 'header.html';
 	$servername = "localhost";

@@ -19,6 +19,13 @@
 
 <?php
 	require 'header.html';
+	require 'schema/connect.php';
+	require 'schema/createdb.php';
+	require 'schema/nurse.php';
+	require 'schema/wardboy.php';
+	require 'schema/doctor.php';
+	require 'schema/receptionist.php';
+	require 'schema/patient.php';
 ?>
 <div class="super_container">
 	
