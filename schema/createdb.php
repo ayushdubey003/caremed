@@ -12,10 +12,10 @@
     
     // Create database
     $sql = "CREATE DATABASE medanta";
-    if (mysqli_query($conn, $sql)) {
-        echo "Database created successfully";
+    if (@mysqli_query($conn, $sql)) {
+        //echo "Database created successfully";
     } else {
-        echo "Error creating database: " . mysqli_error($conn);
+        //echo "Error creating database: " . mysqli_error($conn);
     }
     
     mysqli_close($conn);
