@@ -52,11 +52,11 @@
     echo '<div class="home_background parallax-window" data-parallax="scroll" data-image-src="../images/news.jpg" data-speed="0.8"></div>';
     echo '<div class="about">';
     echo '<div class="button home_button" style="margin-left:35%">
-            <a href="patientregistration.php" style="width:300px;text-align:center">Patient Registration</a>
+            <a href="patientregistration.php" style="width:300px;text-align:center">Assign Doctor</a>
          </div>';
-    /*echo '<div class="button home_button" style="margin-left:35%;margin-bottom:200px">
-         <a href="updatepatient.php" style="width:300px;text-align:center">Patient Details Update</a>*/
-    echo '</div>';
+    echo '<div class="button home_button" style="margin-left:35%;margin-bottom:200px">
+         <a href="updatepatient.php" style="width:300px;text-align:center">Update Bill</a>
+    </div>';
 ?>
 
 	<!-- Footer -->

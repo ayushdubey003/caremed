@@ -110,7 +110,7 @@
             $did=$_POST['doctor'];
             $nid=$_POST['nurse'];
             $wid=$_POST['wardboy'];
-            if($did==-1||$nid==-1||$wid==-1)
+            if($did==-1)
             {
                 echo('<script type="text/javascript">
 						alert("All fields are compulsary");

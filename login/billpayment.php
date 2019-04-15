@@ -78,7 +78,7 @@
                     $mode="cash";
                 else
                     $mode="epayment";
-                $due=$tamt-$bill;
+				$due=$tamt-$bill;
                 $update="UPDATE patient SET totalbill='$tamt', billpaid='$bill', billdue='$due', $mode='$bill' WHERE aadhar=$pid";
                 mysqli_query($conn,$update);
                 header("Location: receptionisthome.php");

@@ -1,5 +1,5 @@
 <head>
-<title>Receptionist</title>
+<title>Admin Home</title>
 <link rel="icon" href="../images/logo.png" type="image/gif" sizes="16x16">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">

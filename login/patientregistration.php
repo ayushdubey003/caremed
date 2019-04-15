@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Receptionist</title>
+<title>Register patient</title>
 <link rel="icon" href="../images/logo.png" type="image/gif" sizes="16x16">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -118,9 +118,9 @@
 
 	<div class="about">
                 <form action="patientregistration.php" method="POST">
-					<p style="color:#000000;font-size:20px;margin-left:45%">Aadhar Number: </p><input type="number" name="aadhar" style="width: 60%;padding: 12px 20px;margin-left: 20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>
-                    <p style="color:#000000;font-size:20px;margin-left:45%">First Name : </p><input type="text" name="fname" style="width: 60%;padding: 12px 20px;margin-left: 20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>
-                    <p style="color:#000000;font-size:20px;margin-left:45%">Last Name : </p><input type="text" name="lname" style="width: 60%;padding: 12px 20px;margin-left:20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>
+					<p style="color:#000000;font-size:20px;margin-left:45%">Aadhar Number* : </p><input type="number" name="aadhar" style="width: 60%;padding: 12px 20px;margin-left: 20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>
+                    <p style="color:#000000;font-size:20px;margin-left:45%">First Name* : </p><input type="text" name="fname" style="width: 60%;padding: 12px 20px;margin-left: 20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>
+                    <p style="color:#000000;font-size:20px;margin-left:45%">Last Name* : </p><input type="text" name="lname" style="width: 60%;padding: 12px 20px;margin-left:20%;box-sizing: border-box;border: 2px solid gray;border-radius: 4px;"></input>
                     <p style="color:#000000;font-size:20px;margin-left:45%">Gender* :<br></p>
                     <p style="color:#000000;font-size:20px;margin-left:27%"> 
                         <input type="radio" name="gender" value="1" checked  style="margin-left:20%"> Male
